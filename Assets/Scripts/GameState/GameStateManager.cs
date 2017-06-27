@@ -54,6 +54,7 @@ public class GameStateManager : MonoBehaviour
             m_GameStates.Add(data.GameStateName, state);
         }
         SetState(state);
-        //TODO 状态设置完毕，开始加载场景
+        //状态设置完毕，开始加载场景
+        DownloadManager.Instance.LoadScene(data.LevelName, state.LoadComplete);
     }
 }
