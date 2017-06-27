@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 主城状态
+/// </summary>
 public class HomeState : GameState {
     protected override void OnLoadComplete()
     {

@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 副本状态
+/// </summary>
 public class DungeonState : GameState {
     protected override void OnLoadComplete()
     {

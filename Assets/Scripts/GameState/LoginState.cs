@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 登陆状态
+/// </summary>
 public class LoginState : GameState
 {
     protected override void OnLoadComplete()
