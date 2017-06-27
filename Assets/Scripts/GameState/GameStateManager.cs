@@ -8,7 +8,7 @@ using System.Reflection;
 public class GameStateManager : MonoBehaviour
 {
     /// <summary>
-    /// 存储状态的字典
+    /// 状态名称和状态的映射
     /// </summary>
     private static Dictionary<string, GameState> m_GameStates;
     /// <summary>

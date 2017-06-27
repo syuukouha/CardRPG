@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+/// <summary>
+/// 加载管理
+/// </summary>
 public class DownloadManager : MonoBehaviour {
     #region 单例
     private static DownloadManager instance;
