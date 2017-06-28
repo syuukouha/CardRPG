@@ -1,6 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum UIPanelLayers
+{
+    BackgroundLayer = 0,
+    DefaultLayer = 10,
+    NormalLayer = 20,
+    MainLayer = 30,
+    MaskLayer = 40,
+    PopLayer = 50,
+    TipsLayer = 60,
+    PrompLayer = 70,
+    LoadingLayer = 80
+
+}
 /// <summary>
 /// 界面基类
 /// </summary>

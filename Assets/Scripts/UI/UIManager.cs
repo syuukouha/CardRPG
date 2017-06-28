@@ -22,14 +22,15 @@ public class UIManager
         }
         GameObject UIPrefab = GameObject.Instantiate(prefab);
         UIPrefab.name = name;
-        Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-        if(canvas == null)
-        {
-            Debug.LogError("Canvas is null");
-            return null;
-        }
-        UIPrefab.transform.parent = canvas.transform;
-        UIPrefab.transform.localScale = Vector3.one;
+        //Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+        //if(canvas == null)
+        //{
+        //    Debug.LogError("Canvas is null");
+        //    return null;
+        //}
+        //UIPrefab.transform.parent = canvas.transform;
+        //UIPrefab.transform.localPosition = Vector3.zero;
+        //UIPrefab.transform.localScale = Vector3.one;
         return UIPrefab;
     }
     public static void ShowView(string name)
@@ -40,13 +41,37 @@ public class UIManager
         if (!m_UIViews.TryGetValue(name, out UIView)){
             view = Assembly.GetExecutingAssembly().CreateInstance(name) as IView;
             panel = InstantiatePanel(name);
+            if(view == null || panel == null)
+            {
+                Debug.LogError("View or Panel is null. name :" + name);
+                return;
+            }
+            m_UIViews.Add(name, new KeyValuePair<GameObject, IView>(panel, view));
         }
+        else
+        {
+            view = UIView.Value;
+            panel = UIView.Key;
+        }
+        panel.SetActive(true);
+        view.Start();
     }
-    public static void HideView(string name) { }
-    public static void DestoryAllView() { }
-    public static IView FindView()
+    public static void HideView(string name)
     {
-        IView view = null;
-        return view;
+        KeyValuePair<GameObject, IView> UIView;
+        if (!m_UIViews.TryGetValue(name, out UIView))
+            return;
+        UIView.Key.SetActive(false);
+        UIView.Value.Hide();
+    }
+    public static void DestoryAllView()
+    {
+        foreach (KeyValuePair<GameObject,IView> item in m_UIViews.Values)
+        {
+            item.Value.Destroy();
+            GameObject.Destroy(item.Key);
+        }
+        m_UIViews.Clear();
+        Resources.UnloadUnusedAssets();
     }
 }

@@ -20,6 +20,7 @@ public class GameStateManager : MonoBehaviour
     {
         m_GameStates = new Dictionary<string, GameState>();
         m_CurrentState = null;
+        LoadScene(0);
     }
     private static void SetState(GameState state)
     {
@@ -36,7 +37,9 @@ public class GameStateManager : MonoBehaviour
     /// <param name="sceneID"></param>
     public static void LoadScene(int sceneID)
     {
-        SceneData data = null;
+        SceneData data = new SceneData();
+        data.LevelName = "Login";
+        data.GameStateName = "LoginState";
         if (data == null)
         {
             Debug.LogError("Init SceneData is null. id:" + sceneID);

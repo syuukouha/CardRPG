@@ -10,15 +10,15 @@ public class ResourcesManger : MonoBehaviour {
         get
         {
             if (instance == null)
-                instance = new ResourcesManger();
+                instance = FindObjectOfType(typeof(ResourcesManger)) as ResourcesManger;
             return instance;
         }
     }
     #endregion
-    private string uiPanelPath = "UI/Panel";
+
     public GameObject GetUIPrefab(string name)
     {
-        return LoadPrefab(name, uiPanelPath);
+        return LoadPrefab(name, "UI/Panel");
     }
     private GameObject LoadPrefab(string name,string path)
     {
